@@ -29,7 +29,14 @@ export const databaseProvider = {
     }
 
     const connection = () => {
-      return mongoose.connect(APP_CONFIG.MONGO_DB.uri, {})
+      return mongoose.connect(APP_CONFIG.MONGO_DB.uri, {
+        // todo config @damon
+        authSource: "admin",// 必填
+        auth: {
+            username: 'admin',
+            password: '123456'
+        }
+      })
     }
 
     // DeprecationWarning: Mongoose: the `strictQuery` option will be switched back to `false` by default in Mongoose 7.

@@ -39,7 +39,9 @@ export const CROSS_DOMAIN = {
 }
 
 export const MONGO_DB = {
-  uri: argv.db_uri || `mongodb://127.0.0.1:27017/NodePress`
+  uri: argv.db_uri || `mongodb://127.0.0.1:27017/NodePress`,
+  username: argv.mongo_username || null,
+  password: argv.mongo_password || null
 }
 
 export const REDIS = {
