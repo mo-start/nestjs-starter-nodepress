@@ -4,11 +4,11 @@
  * @author Surmon <https://github.com/surmon-china>
  */
 
-import helmet from 'helmet'
-import passport from 'passport'
-import bodyParser from 'body-parser'
-import cookieParser from 'cookie-parser'
-import compression from 'compression'
+import helmet from 'helmet' // Helmet 通过设置 HTTP 响应标头来帮助保护 Express 应用程序的安全。
+import passport from 'passport' 
+import bodyParser from 'body-parser' 
+import cookieParser from 'cookie-parser' 
+import compression from 'compression' // Node.js 压缩中间件。
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from '@app/app.module'
 import { HttpExceptionFilter } from '@app/filters/error.filter'
@@ -32,7 +32,11 @@ async function bootstrap() {
   // https://github.com/jaredhanson/passport/blob/master/CHANGELOG.md#changed
   app.use(passport.initialize())
   app.useGlobalFilters(new HttpExceptionFilter())
-  app.useGlobalInterceptors(new TransformInterceptor(), new ErrorInterceptor(), new LoggingInterceptor())
+  app.useGlobalInterceptors(
+    new TransformInterceptor(), 
+    new ErrorInterceptor(), 
+    new LoggingInterceptor()
+ )
   // https://github.com/nestjs/nest/issues/528#issuecomment-403212561
   // https://stackoverflow.com/a/60141437/6222535
   // MARK: can't used!
